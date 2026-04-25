@@ -17,10 +17,7 @@ public:
                     f.erase(s[low]);
                 }
                 low++;
-                k--;
-                if(f.size()==1){
-                    break;
-                }
+                k = high - low + 1;
             }
             res = max(res,high - low + 1);  
         }
