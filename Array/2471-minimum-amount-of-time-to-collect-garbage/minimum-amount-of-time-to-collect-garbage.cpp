@@ -1,6 +1,7 @@
 class Solution {
 public:
     int garbageCollection(vector<string>& garbage, vector<int>& travel) {
+        
         int n = garbage.size();
         int totalTime = 0;
         // Store last house index for each garbage type
@@ -9,10 +10,14 @@ public:
         int lastG = 0;
         // Traverse all houses
         for(int i = 0; i < n; i++) {
+
             // Picking each garbage takes 1 minute
             totalTime += garbage[i].size();
+
             // Check each garbage type in current house
             for(char ch : garbage[i]) {
+
+                // Updating last position of each type garbage
                 if(ch == 'M') {
                     lastM = i;
                 }
@@ -24,17 +29,13 @@ public:
                 }
             }
         }
-        // Add travel time for Metal truck
+        // Adding travel time for Each truck one by one
         for(int i = 0; i < lastM; i++) {
             totalTime += travel[i];
         }
-
-        // Add travel time for Paper truck
         for(int i = 0; i < lastP; i++) {
             totalTime += travel[i];
         }
-
-        // Add travel time for Glass truck
         for(int i = 0; i < lastG; i++) {
             totalTime += travel[i];
         }
